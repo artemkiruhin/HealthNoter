@@ -15,12 +15,12 @@ public abstract class RepositoryBase<TEntity> : IRepository<TEntity> where TEnti
 
     public async Task<IEnumerable<TEntity>> GetAllAsync(CancellationToken ct)
     {
-        return await _dbSet.ToListAsync(ct);
+        return await _dbSet.AsNoTracking().ToListAsync(ct);
     }
 
     public IEnumerable<TEntity> GetAll()
     {
-        return _dbSet.ToList();
+        return _dbSet.AsNoTracking().ToList();
     }
 
     public async Task<TEntity?> GetByIdAsync(Guid id, CancellationToken ct)

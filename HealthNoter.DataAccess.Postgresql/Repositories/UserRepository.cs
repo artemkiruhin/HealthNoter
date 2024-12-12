@@ -12,11 +12,11 @@ public class UserRepository : RepositoryBase<UserEntity>, IUserRepository
 
     public async Task<UserEntity?> GetByUsernameAndPassword(string username, string password, CancellationToken ct)
     {
-        return await _dbSet.FirstOrDefaultAsync(x => x.Username == username && x.Password == password, ct);
+        return await _dbSet.AsNoTracking().FirstOrDefaultAsync(x => x.Username == username && x.Password == password, ct);
     }
 
     public async Task<UserEntity?> GetByUsername(string username, CancellationToken ct)
     {
-        return await _dbSet.FirstOrDefaultAsync(x => x.Username == username, ct);
+        return await _dbSet.AsNoTracking().FirstOrDefaultAsync(x => x.Username == username, ct);
     }
 }

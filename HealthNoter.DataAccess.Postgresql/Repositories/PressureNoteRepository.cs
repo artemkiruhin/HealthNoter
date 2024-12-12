@@ -12,11 +12,11 @@ public class PressureNoteRepository : RepositoryBase<PressureNoteEntity>, IPress
 
     public async Task<IEnumerable<PressureNoteEntity>> GetByUserId(Guid userid, CancellationToken ct)
     {
-        return await _dbSet.Where(x => x.UserId == userid).ToListAsync(ct);
+        return await _dbSet.AsNoTracking().Where(x => x.UserId == userid).ToListAsync(ct);
     }
 
     public async Task<PressureNoteEntity?> GetByUserIdAndOwnId(Guid userid, Guid id, CancellationToken ct)
     {
-        return await _dbSet.FirstOrDefaultAsync(x => x.UserId == userid && x.Id == id, ct);
+        return await _dbSet.AsNoTracking().FirstOrDefaultAsync(x => x.UserId == userid && x.Id == id, ct);
     }
 }
