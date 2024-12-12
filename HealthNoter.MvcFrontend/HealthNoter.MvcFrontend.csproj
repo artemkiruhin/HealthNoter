@@ -6,4 +6,10 @@
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\HealthNoter.Core\HealthNoter.Core.csproj" />
+      <ProjectReference Include="..\HealthNoter.DataAccess.Postgresql\HealthNoter.DataAccess.Postgresql.csproj" />
+      <ProjectReference Include="..\HealthNoter.Service\HealthNoter.Service.csproj" />
+    </ItemGroup>
+
 </Project>
