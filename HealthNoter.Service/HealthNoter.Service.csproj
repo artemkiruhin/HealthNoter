@@ -6,4 +6,9 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\HealthNoter.Core\HealthNoter.Core.csproj" />
+      <ProjectReference Include="..\HealthNoter.DataAccess.Postgresql\HealthNoter.DataAccess.Postgresql.csproj" />
+    </ItemGroup>
+
 </Project>
