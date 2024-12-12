@@ -182,3 +182,7 @@ appsettings.Development.json
 
 # Environment variables
 .env
+
+appsettings.json
+Migrations/
+launchSettings.json
