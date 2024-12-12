@@ -186,3 +186,5 @@ appsettings.Development.json
 appsettings.json
 Migrations/
 launchSettings.json
+bin/
+obj/

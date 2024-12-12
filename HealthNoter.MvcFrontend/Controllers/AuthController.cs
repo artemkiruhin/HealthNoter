@@ -9,11 +9,13 @@ public class AuthController : Controller
 {
     private readonly IAuthService _authService;
     private readonly ILogger<AuthController> _logger;
+    private readonly IConfiguration _configuration;
 
-    public AuthController(IAuthService authService, ILogger<AuthController> logger)
+    public AuthController(IAuthService authService, ILogger<AuthController> logger, IConfiguration configuration)
     {
         _authService = authService;
         _logger = logger;
+        _configuration = configuration;
     }
     
     [HttpGet("/login")]
@@ -39,7 +41,12 @@ public class AuthController : Controller
         try
         {
             var token = await _authService.Login(model.Username, model.Password, HttpContext.RequestAborted);
-            Response.Cookies.Append("jwt", token);
+            Response.Cookies.Append("jwt", token, new CookieOptions
+            {
+                HttpOnly = true,              
+                SameSite = SameSiteMode.Lax,  
+                Expires = DateTime.UtcNow.AddHours(int.Parse(_configuration["jwt:expires"] ?? throw new NullReferenceException()))
+            });
 
             _logger.LogInformation($"Пользователь {model.Username} авторизовался | {DateTime.Now}");
             

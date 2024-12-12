@@ -52,13 +52,13 @@ builder.Services.AddAuthentication(options =>
 
             OnAuthenticationFailed = context =>
             {
-                context.Response.Redirect("/Account/Login");
+                context.Response.Redirect("/account/login");
                 return Task.CompletedTask;
             },
 
             OnChallenge = context =>
             {
-                context.Response.Redirect("/Account/Login");
+                context.Response.Redirect("/account/login");
                 return Task.CompletedTask;
             }
         };
