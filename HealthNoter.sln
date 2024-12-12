@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthNoter.MvcFrontend", "HealthNoter.MvcFrontend\HealthNoter.MvcFrontend.csproj", "{08C9C192-412D-4AAD-B7EA-3AE6A2344015}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthNoter.Core", "HealthNoter.Core\HealthNoter.Core.csproj", "{F5EBF48B-8CBF-45B5-863B-3E1D0E4A9170}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthNoter.Service", "HealthNoter.Service\HealthNoter.Service.csproj", "{928F5EEF-E909-4A49-BE6A-AB6EC83EC7A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthNoter.DataAccess.Postgresql", "HealthNoter.DataAccess.Postgresql\HealthNoter.DataAccess.Postgresql.csproj", "{B2909074-A9FD-40FA-8A59-6DEF2D2281E8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{08C9C192-412D-4AAD-B7EA-3AE6A2344015}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08C9C192-412D-4AAD-B7EA-3AE6A2344015}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08C9C192-412D-4AAD-B7EA-3AE6A2344015}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08C9C192-412D-4AAD-B7EA-3AE6A2344015}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5EBF48B-8CBF-45B5-863B-3E1D0E4A9170}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5EBF48B-8CBF-45B5-863B-3E1D0E4A9170}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5EBF48B-8CBF-45B5-863B-3E1D0E4A9170}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5EBF48B-8CBF-45B5-863B-3E1D0E4A9170}.Release|Any CPU.Build.0 = Release|Any CPU
+		{928F5EEF-E909-4A49-BE6A-AB6EC83EC7A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{928F5EEF-E909-4A49-BE6A-AB6EC83EC7A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{928F5EEF-E909-4A49-BE6A-AB6EC83EC7A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{928F5EEF-E909-4A49-BE6A-AB6EC83EC7A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2909074-A9FD-40FA-8A59-6DEF2D2281E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2909074-A9FD-40FA-8A59-6DEF2D2281E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2909074-A9FD-40FA-8A59-6DEF2D2281E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2909074-A9FD-40FA-8A59-6DEF2D2281E8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
