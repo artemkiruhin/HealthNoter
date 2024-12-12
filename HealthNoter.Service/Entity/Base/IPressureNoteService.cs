@@ -9,4 +9,5 @@ public interface IPressureNoteService
     Task<PressureNoteDto> GetById(Guid id, CancellationToken ct);
     Task<bool> Update(Guid id, int? sys, int? dia, int? pulse, CancellationToken ct);
     Task<bool> Add(int sys, int dia, int pulse, Guid userid, CancellationToken ct);
+    Task<IEnumerable<PressureNoteDto>> GetAllByUserId(Guid userid, CancellationToken ct);
 }

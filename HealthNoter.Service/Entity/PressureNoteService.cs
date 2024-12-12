@@ -104,4 +104,12 @@ public class PressureNoteService : IPressureNoteService
             throw;
         }
     }
+
+    public async Task<IEnumerable<PressureNoteDto>> GetAllByUserId(Guid userid, CancellationToken ct)
+    {
+        var notes = await _database.PressureNoteRepository.GetByUserId(userid, ct);
+        var dtos = notes.Select(x => 
+            new PressureNoteDto(x.Id, x.Sys, x.Dia, x.Pulse, x.CreatedAt, x.UserId, x.User.Username));
+        return dtos;
+    }
 }
