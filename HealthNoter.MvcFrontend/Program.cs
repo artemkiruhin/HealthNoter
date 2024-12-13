@@ -20,8 +20,12 @@ var configuration = builder.Configuration;
 
 builder.Services.AddAuthentication(options =>
     {
-        options.DefaultScheme = BearerTokenDefaults.AuthenticationScheme;
-        options.DefaultChallengeScheme = BearerTokenDefaults.AuthenticationScheme;
+        options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    })
+    .AddCookie(options => 
+    {
+        options.LoginPath = new Microsoft.AspNetCore.Http.PathString("Auth/Login");
     })
     .AddJwtBearer(options =>
     {
@@ -52,19 +56,22 @@ builder.Services.AddAuthentication(options =>
 
             OnAuthenticationFailed = context =>
             {
-                context.Response.Redirect("/account/login");
+                context.Response.Redirect($"Auth/Login");
+                context.Response.StatusCode = 302;
                 return Task.CompletedTask;
             },
 
             OnChallenge = context =>
             {
-                context.Response.Redirect("/account/login");
+                context.Response.Redirect("Auth/Login");
+                context.Response.StatusCode = 302;
                 return Task.CompletedTask;
             }
         };
-    });
-
-
+        
+    }
+        
+        );
 
 builder.Services.AddRouting(options =>
 {
@@ -86,7 +93,16 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IPressureNoteService, PressureNoteService>();
 builder.Services.AddScoped<IHashService, Sha256HashService>();
-builder.Services.AddScoped<IJwtService, JwtService>();
+builder.Services.AddScoped<IJwtService>(service =>
+{
+    var key = configuration["jwt:key"];
+    var audience = configuration["jwt:audience"];
+    var issuer = configuration["jwt:issuer"];
+    
+    int.TryParse(configuration["jwt:key"], out var expirationTime); 
+    
+    return new JwtService(key, audience, issuer, expirationTime);
+});
 builder.Services.AddScoped<IAuthService, AuthService>();
 
 
@@ -112,7 +128,7 @@ app.MapStaticAssets();
 
 app.MapControllerRoute(
         name: "default",
-        pattern: "{controller=Home}/{action=Index}/{id?}")
+        pattern: "{controller=Auth}/{action=Login}")
     .WithStaticAssets();
 
 

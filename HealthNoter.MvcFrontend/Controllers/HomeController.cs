@@ -1,9 +1,11 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using HealthNoter.MvcFrontend.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HealthNoter.MvcFrontend.Controllers;
 
+[Authorize]
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
@@ -13,11 +15,13 @@ public class HomeController : Controller
         _logger = logger;
     }
 
+    
     public IActionResult Index()
     {
         return View();
     }
 
+    
     public IActionResult Privacy()
     {
         return View();

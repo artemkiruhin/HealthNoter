@@ -53,7 +53,7 @@ public class JwtService : IJwtService
             ValidateIssuerSigningKey = true,
             ValidIssuer = _issuer,
             ValidAudience = _audience,
-            IssuerSigningKey = new SymmetricSecurityKey(Convert.FromBase64String(_key))
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_key))
         };
         
         var principal = tokenHandler.ValidateToken(token, validationParameters, out SecurityToken validatedToken);
